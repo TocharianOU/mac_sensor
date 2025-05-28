@@ -1,0 +1,39 @@
+metricsets: ["sample_metricset"]
+hosts:
+{{#each hosts}}
+  - {{this}}
+{{/each}}
+period: {{period}}
+paths:
+{{#each paths}}
+  - {{this}}
+{{/each}}
+exclude_files: [".gz$"]
+# 直接解析 JSON，将字段提取到根级别
+json.keys_under_root: true
+json.add_error_key: true
+# 添加基本的处理器
+processors:
+  - add_host_metadata:
+      when.not.contains.tags: forwarded
+  - add_fields:
+      target: event
+      fields:
+        dataset: mac_sensor_luke.sensors
+        module: mac_sensor_luke
+        kind: metric
+        category: [host]
+        type: [info]
+  - add_fields:
+      target: data_stream
+      fields:
+        type: metrics
+        dataset: mac_sensor_luke.sensors
+        namespace: default
+  - add_fields:
+      target: ecs
+      fields:
+        version: 8.0.0
+{{#if processors}}
+{{processors}}
+{{/if}}

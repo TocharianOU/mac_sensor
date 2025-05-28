@@ -1,0 +1,34 @@
+title: "Mac Hardware Sensors"
+type: metrics
+dataset: mac_sensor_luke.sensors
+streams:
+  - input: logfile
+    title: Mac Sensor Metrics from Log Files
+    description: Collect Mac hardware sensor metrics from NDJSON log files
+    vars:
+      - name: paths
+        type: text
+        title: Log file paths
+        multi: true
+        required: true
+        show_user: true
+        default:
+          - /tmp/mac-sensors-log.json
+      - name: data_stream.dataset
+        type: text
+        title: Dataset name
+        default: mac_sensor_luke.sensors
+        required: true
+        show_user: false
+      - name: processors
+        type: yaml
+        title: Processors
+        multi: false
+        required: false
+        show_user: false
+        description: >
+          Processors are used to reduce the number of fields in the exported event or to enhance the event with metadata.
+
+        default: |
+          - add_host_metadata:
+              when.not.contains.tags: forwarded
