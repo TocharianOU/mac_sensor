@@ -1,0 +1,67 @@
+- name: mac
+  type: group
+  description: Mac hardware monitoring data
+  fields:
+    - name: sensors
+      type: group
+      description: Hardware sensor readings
+      fields:
+        - name: cpu_thermal_level
+          type: long
+          description: CPU thermal level indicator (0-100)
+          metric_type: gauge
+        - name: io_thermal_level
+          type: long
+          description: I/O thermal level indicator (0-100)
+          metric_type: gauge
+        - name: fan_speed
+          type: long
+          description: Fan speed in RPM
+          metric_type: gauge
+        - name: cpu_temperature
+          type: float
+          description: CPU temperature in Celsius
+          metric_type: gauge
+        - name: cpu_plimit
+          type: float
+          description: CPU power limit percentage
+          unit: percent
+          metric_type: gauge
+        - name: gpu_plimit
+          type: float
+          description: GPU power limit percentage
+          unit: percent
+          metric_type: gauge
+- name: host
+  type: group
+  description: Host information
+  fields:
+    - name: name
+      type: keyword
+      description: Hostname
+    - name: os
+      type: group
+      description: Operating system information
+      fields:
+        - name: platform
+          type: keyword
+          description: Operating system platform
+- name: event
+  type: group
+  description: Event metadata
+  fields:
+    - name: dataset
+      type: keyword
+      description: Event dataset
+    - name: module
+      type: keyword
+      description: Event module
+    - name: kind
+      type: keyword
+      description: Event kind
+    - name: category
+      type: keyword
+      description: Event category
+    - name: type
+      type: keyword
+      description: Event type

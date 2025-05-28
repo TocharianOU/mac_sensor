@@ -1,0 +1,38 @@
+{
+    "@timestamp": "2025-05-28T10:17:57.3NZ",
+    "host": {
+        "name": "Lukes-MacBook-Air",
+        "os": {
+            "platform": "darwin"
+        }
+    },
+    "mac": {
+        "sensors": {
+            "cpu_thermal_level": 15,
+            "io_thermal_level": 15,
+            "fan_speed": 2771,
+            "cpu_temperature": 62.21,
+            "cpu_plimit": 0.00,
+            "gpu_plimit": 0.00
+        }
+    },
+    "event": {
+        "dataset": "mac_sensor_luke.sensors",
+        "module": "mac_sensor_luke",
+        "kind": "metric",
+        "category": [
+            "host"
+        ],
+        "type": [
+            "info"
+        ]
+    },
+    "ecs": {
+        "version": "8.0.0"
+    },
+    "data_stream": {
+        "type": "metrics",
+        "dataset": "mac_sensor_luke.sensors",
+        "namespace": "default"
+    }
+} 
